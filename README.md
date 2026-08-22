@@ -17,9 +17,24 @@ scoring is private. The answer key is not in this repository.
 
 ```mermaid
 flowchart LR
-  in["Subject cards<br/>+ mail archive"] --> agent["Your agent"]
-  agent -->|"opens some mail, not all"| out["JSONL:<br/>one passage per line"]
-  out --> score["recall · precision<br/>decoy rate · budget"]
+  archive["Mail archive<br/>+ subject cards"]
+
+  subgraph build ["Answer key · built once, kept private"]
+    direction LR
+    draft["Gemini drafts<br/>passages, and lookalikes"] --> judge["Second model<br/>judges"] --> human["Human<br/>decides"]
+  end
+
+  subgraph run ["Exam · what you run"]
+    direction LR
+    agent["Your agent<br/>opens some mail, not all"] --> out["Passages<br/>JSONL"]
+  end
+
+  score["recall · precision<br/>decoy rate · budget"]
+
+  archive --> draft
+  archive --> agent
+  human --> score
+  out --> score
 ```
 
 Start on the Sallow practice set below: same rules, fictional people, and
@@ -76,25 +91,26 @@ decoys are an expired role title.
 ## How the official key was made
 
 The practice set is a rewritten slice of this key, not a second labelling
-of the real archive. The machine proposes. Another model judges. A human
-decides. That last mark is gold.
+of the real archive.
 
-```mermaid
-flowchart LR
-  src["Every email × every subject<br/>roles dated as of that message"]
-  draft["1 · Gemini drafts<br/>passages that are theirs,<br/>plus lookalikes that are not"]
-  judge["2 · Second model judges<br/>votes on spans it did not find;<br/>a third call breaks ties"]
-  human["3 · Human decides<br/>YES or NO on each proposed span"]
-  key["Closed key"]
-  src --> draft --> judge --> human --> key
-```
+**Gemini drafts.** Every email is read once for every subject at the same
+time, and roles are read as of that message's date. It proposes passages
+that are the subject's personal data, and passages that only look like
+them — a namesake, or a job title that belonged to someone else at the
+time.
 
-Three properties come out of that shape. Roles are read as of the message
-date, so no label rests on a later fact. Every subject is considered on
-every mail, which is what produces the lookalikes — a namesake, or a job
-title that belonged to someone else at the time. And the human corrects a
-draft rather than labelling from scratch, so this is not a claim that the
-model and the human independently agreed.
+**A second model judges.** It votes on every span the first pass did not
+find. Where the two still disagree, a third call decides without being
+told which model said what.
+
+**A human decides.** One question per proposed span: is this this
+person's personal data? That mark is the key.
+
+Two things follow. Considering every subject on every mail is what
+produces the lookalikes — a pass scoped to one name almost never has
+occasion to say no. And the human corrects a draft rather than labelling
+from scratch, so this is not a claim that a model and a human
+independently agreed.
 
 ## Official exam
 
