@@ -1,0 +1,108 @@
+mapping.json
+cache/
+
+# Raw, non-pseudonymized artifacts: real names of living people. Never pushed.
+#
+# The per-subject files below are the answer key itself. Publishing them means
+# publishing a curated dossier on ten named living people -- every passage
+# assessing their conduct, gathered in one place and indexed by name. That is
+# the exact harm Article 15 tooling is supposed to guard against, and the fact
+# that the source archive is public does not undo the aggregation. Release, if
+# ever, goes through mapping.json pseudonymization first.
+corpus.jsonl
+dropped.jsonl
+annotations.jsonl
+negatives.jsonl
+annotations_S*.jsonl
+negatives_S*.jsonl
+subjects.json
+glossary_S*.md
+glossary_S*.json
+# Run logs and per-subject byproducts. Nothing reads them; the numbers that
+# matter are in data/agreement_all.json and the scorecards.
+data/agreement_S*.json
+data/truncation_S*.txt
+data/truncation_log.txt
+data/index_manifest.json
+
+# Fetch-planning scaffolding, derived from the archive and regenerated from the
+# HTML cache by probe_index.py, score_threads.py and fetch_plan.py. It carries
+# corpus content -- 269 thread titles with their rename chains, 513 message
+# subjects, and per-month selection rationale naming people who are not data
+# subjects -- so it is covered by the same rule as the corpus itself.
+data/index_scores.json
+data/thread_scores.json
+data/fetch_plan.json
+
+data/pass2_*.jsonl
+data/annotations_merged.jsonl
+data/negatives_merged.jsonl
+data/adjudication_S*.jsonl
+data/glossary_S*.json
+data/scope_S*.json
+data/timeline.json
+data/reconcile_cache.json
+data/audit_*.json
+runs/
+samples_*.txt
+__pycache__/
+*.pyc
+.venv/
+tab/data/
+
+# Review artifacts: contain real names of living people
+data/adjudication_sample.jsonl
+data/thread_briefs.json
+data/msg_attribution.json
+data/adjudication_chats.json
+data/adjudication_edits.jsonl
+data/adjudication_extra.jsonl
+data/adjudication_merges.json
+data/adjudication_queue.json
+data/adjudication_expansions.json
+data/adjudication_regions.json
+data/adjudication_reassigns.json
+data/adjudication_sheet_*.md
+data/adjudication_verdicts.csv
+review_S*.md
+data/sweep_S*.jsonl
+samples_corpus.txt
+
+batch_*.md
+S2_look_with_your_eyes.md
+
+# Publishable task inputs, built by dsarbench/build_inputs.py. dist/subjects.json
+# is the task-facing subset -- identity facts already public in the archive, with
+# our `adverse` and `one_liner` characterisations stripped. The negation is needed
+# because the `subjects.json` rule above matches at any depth.
+!dist/subjects.json
+!dist/corpus_manifest.json
+
+# Frozen closed key: human gold, verbatim passages, living people. Not published.
+data/closed_key.jsonl
+data/closed_key_meta.json
+
+# Human review artifacts. These carry verbatim passage text about named living
+# people -- the archive directory especially, since it is a full snapshot of a
+# review session. Same reason the key itself is not tracked.
+data/adjudication_archive/
+data/adjudication_*.jsonl
+data/adjudication_*.json
+data/adjudication_*.csv
+*.bak
+*.old
+
+# Gold seed: verbatim passages about named living people, same as the key.
+# The rules file is prose about the standard and is safe to track.
+goldseed/gold.jsonl
+goldseed/progress.json
+goldseed/seed_emails.json
+
+# local venv for the HF upload step
+.venv-hf/
+
+# Workshop notes and key-building artifacts — not part of this package
+.ai/
+.ai
+goldseed/
+data/

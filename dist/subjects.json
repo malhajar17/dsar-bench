@@ -1,0 +1,279 @@
+{
+ "S1": {
+  "addresses": [
+   "g.branden.robinson@gmail.com"
+  ],
+  "aliases": [
+   "branden"
+  ],
+  "confusable": [
+   "other Robinsons; other Brandens if any"
+  ],
+  "display": "G. Branden Robinson",
+  "extra_patterns": {},
+  "known_names": [
+   "G. Branden Robinson",
+   "Branden Robinson",
+   "Branden"
+  ],
+  "roles": [
+   {
+    "basis": "Authors the 2026-02-09 grievance; receives a forwarded Community Team warning.",
+    "from": null,
+    "role": "Debian Developer; complainant in the 2026-02 Community Team appeal",
+    "to": null
+   }
+  ],
+  "subject_id": "S1"
+ },
+ "S10": {
+  "addresses": [
+   "natureshadow@debian.org"
+  ],
+  "aliases": [
+   "natureshadow"
+  ],
+  "confusable": [
+   "other Georges; surname George is a weak seed so we do not seed on George alone"
+  ],
+  "display": "Dominik George",
+  "extra_patterns": {
+   "natureshadow": "\\bnatureshadow\\b"
+  },
+  "known_names": [
+   "Dominik George"
+  ],
+  "roles": [
+   {
+    "basis": "Posts as natureshadow@debian.org; 20 messages mention George (surname is weak \u2014 prefer full name + handle).",
+    "from": null,
+    "role": "Debian Developer",
+    "to": null
+   }
+  ],
+  "subject_id": "S10"
+ },
+ "S2": {
+  "addresses": [
+   "tille@debian.org",
+   "andreas@an3as.eu"
+  ],
+  "aliases": [
+   "tille"
+  ],
+  "confusable": [
+   "Andreas Metzler <ametzler@bebt.de>",
+   "Jonathan Carter (DPL until 2024-03/04)",
+   "Sruthi Chandran (DPL from 2026-04)"
+  ],
+  "display": "Andreas Tille",
+  "extra_patterns": {
+   "Dear Andreas": "\\bDear Andreas\\b",
+   "Project Leader": "\\bProject Leader\\b",
+   "the DPL": "\\bthe DPL\\b"
+  },
+  "known_names": [
+   "Andreas Tille",
+   "Tille",
+   "Andreas"
+  ],
+  "roles": [
+   {
+    "basis": "Carter signs as DPL through 2024-03-25; Tille writes Bits from a past DPL on 2026-05-06 after 2 terms.",
+    "from": "2024-04-21",
+    "role": "Debian Project Leader (DPL)",
+    "to": "2026-04-21"
+   }
+  ],
+  "subject_id": "S2"
+ },
+ "S3": {
+  "addresses": [
+   "soren@debian.org"
+  ],
+  "aliases": [
+   "soren"
+  ],
+  "confusable": [
+   "other new DDs announced in the same welcome mails"
+  ],
+  "display": "Soren Stoutner",
+  "extra_patterns": {
+   "soren handle": "<soren>"
+  },
+  "known_names": [
+   "Soren Stoutner",
+   "Stoutner",
+   "Soren"
+  ],
+  "roles": [
+   {
+    "basis": "Welcome new Debian Developers: hibby, cpina, soren on 2024-01-26.",
+    "from": "2024-01-26",
+    "role": "Debian Developer (NM completed)",
+    "to": null
+   }
+  ],
+  "subject_id": "S3"
+ },
+ "S4": {
+  "addresses": [
+   "spwhitton@spwhitton.name"
+  ],
+  "aliases": [
+   "spwhitton"
+  ],
+  "confusable": [
+   "other Seans if any"
+  ],
+  "display": "Sean Whitton",
+  "extra_patterns": {
+   "Dear Sean": "\\bDear Sean\\b"
+  },
+  "known_names": [
+   "Sean Whitton",
+   "Whitton"
+  ],
+  "roles": [
+   {
+    "basis": "Posts in the 2026-05 DPL delegation transition thread.",
+    "from": null,
+    "role": "Debian Developer; delegation / Technical Committee threads",
+    "to": null
+   }
+  ],
+  "subject_id": "S4"
+ },
+ "S5": {
+  "addresses": [
+   "jcc@debian.org"
+  ],
+  "aliases": [
+   "jcc"
+  ],
+  "confusable": [
+   "Jonathan Dowland",
+   "Jonathan Wiltshire",
+   "Jonathan McDowell",
+   "Andreas Tille (later DPL)",
+   "a signature that is only -Jonathan"
+  ],
+  "display": "Jonathan Carter",
+  "extra_patterns": {
+   "Project Leader": "\\bProject Leader\\b",
+   "the DPL": "\\bthe DPL\\b"
+  },
+  "known_names": [
+   "Jonathan Carter",
+   "Carter"
+  ],
+  "roles": [
+   {
+    "basis": "Signs -Jonathan, Debian Project Leader on monthly welcome mails through 2024-03-25.",
+    "from": null,
+    "role": "Debian Project Leader (DPL)",
+    "to": "2024-03-25"
+   }
+  ],
+  "subject_id": "S5"
+ },
+ "S6": {
+  "addresses": [
+   "dr@jones.dk"
+  ],
+  "aliases": [
+   "js"
+  ],
+  "confusable": [
+   "other Jonases if any"
+  ],
+  "display": "Jonas Smedegaard",
+  "extra_patterns": {},
+  "known_names": [
+   "Jonas Smedegaard",
+   "Smedegaard"
+  ],
+  "roles": [
+   {
+    "basis": "High-volume participant; 35 messages mention Smedegaard.",
+    "from": null,
+    "role": "Debian Developer; frequent packaging / copyright discussant",
+    "to": null
+   }
+  ],
+  "subject_id": "S6"
+ },
+ "S7": {
+  "addresses": [
+   "rra@debian.org"
+  ],
+  "aliases": [
+   "rra",
+   "eagle"
+  ],
+  "confusable": [],
+  "display": "Russ Allbery",
+  "extra_patterns": {},
+  "known_names": [
+   "Russ Allbery",
+   "Allbery"
+  ],
+  "roles": [
+   {
+    "basis": "31 messages mention Allbery; signs with eyrie.org.",
+    "from": null,
+    "role": "Debian Developer; policy / mail-infra discussant",
+    "to": null
+   }
+  ],
+  "subject_id": "S7"
+ },
+ "S8": {
+  "addresses": [
+   "simon@josefsson.org"
+  ],
+  "aliases": [],
+  "confusable": [
+   "other Simons if any"
+  ],
+  "display": "Simon Josefsson",
+  "extra_patterns": {},
+  "known_names": [
+   "Simon Josefsson",
+   "Josefsson"
+  ],
+  "roles": [
+   {
+    "basis": "15 sent mails; 23 mention Josefsson.",
+    "from": null,
+    "role": "Debian Developer",
+    "to": null
+   }
+  ],
+  "subject_id": "S8"
+ },
+ "S9": {
+  "addresses": [
+   "mh+debian-project@zugschlus.de"
+  ],
+  "aliases": [
+   "zugschlus"
+  ],
+  "confusable": [],
+  "display": "Marc Haber",
+  "extra_patterns": {},
+  "known_names": [
+   "Marc Haber",
+   "Haber"
+  ],
+  "roles": [
+   {
+    "basis": "20 messages mention Haber; posts from zugschlus.de.",
+    "from": null,
+    "role": "Debian Developer",
+    "to": null
+   }
+  ],
+  "subject_id": "S9"
+ }
+}
