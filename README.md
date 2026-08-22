@@ -15,6 +15,44 @@ would trust at two million emails.
 This repository is the evaluation package. It is not an agent. Official
 scoring is private. The answer key is not in this repository.
 
+```mermaid
+flowchart LR
+  cards[Subject cards]
+  archive[Mail archive]
+  agent[Your agent]
+  out[JSONL passages]
+  score[Four numbers]
+  cards --> agent
+  archive --> agent
+  agent -->|"open some mail, not all"| out
+  out --> score
+```
+
+The four numbers: **recall** (did you find their data, including unnamed
+passages), **precision** (is what you returned actually theirs), **decoy
+rate** (did you hand over a namesake or an expired role), **budget** (how
+much you opened). None is enough alone. Grep is the floor, not the exam.
+
+Two ways in:
+
+```mermaid
+flowchart TD
+  start[First time here]
+  start --> practice
+  start --> official
+  practice[Practice: Sallow FM]
+  official[Official exam]
+  practice --> sallow["dist/sallow/"]
+  sallow --> run1[Your agent or name_search]
+  run1 --> local["score.py --dev dist/sallow"]
+  official --> rebuild[Rebuild the real corpus]
+  rebuild --> run2[Your agent]
+  run2 --> closed[We score. The key stays here.]
+```
+
+Start on Sallow. Same rules, fictional people, you can score on your
+machine. The official archive is a different corpus and a closed key.
+
 ## The exam
 
 Four numbers, none sufficient alone:
@@ -61,6 +99,29 @@ python3 dsarbench/score.py runs/sallow_name_search_cautious.jsonl --dev dist/sal
 Cautious 46.3% recall / 40.4% precision; greedy 48.8% / 40.0%. Named
 passages 95%; unnamed 0–5%; T7 authorship almost untouched. The two
 decoys are an expired role title.
+
+## How the official key was made
+
+Three steps. The machine proposes. Another model judges. A human decides.
+The practice set is a rewritten slice of that human key, not a second
+labelling of the real archive.
+
+```mermaid
+flowchart LR
+  A["1. Gemini first pass"]
+  B["2. Judge"]
+  C["3. Human"]
+  A --> B --> C
+```
+
+1. **Gemini** reads every mail for every subject and proposes passages
+   (theirs, or a lookalike that is not).
+2. **Judge** — a second model votes on each proposal. Disagreements get
+   a third call.
+3. **Human** — one question: is this this person's data? That mark is
+   gold. The key is closed and not in this repo.
+
+Review corrects a draft. It is not "the model and the human agreed."
 
 ## Official exam
 
