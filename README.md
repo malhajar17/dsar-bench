@@ -102,26 +102,56 @@ decoys are an expired role title.
 
 ## How the official key was made
 
-Three steps. The machine proposes. Another model judges. A human decides.
-The practice set is a rewritten slice of that human key, not a second
-labelling of the real archive.
+The practice set is a rewritten slice of this key, not a second labelling
+of the real archive. The machine proposes. Another model judges. A human
+decides. That last mark is gold.
 
 ```mermaid
-flowchart LR
-  A["1. Gemini first pass"]
-  B["2. Judge"]
-  C["3. Human"]
-  A --> B --> C
+flowchart TD
+  mail[Every email in the archive]
+  people[Every data subject]
+  notebook["Who held which job on this mail's date"]
+
+  subgraph pass1 [1. Gemini first pass]
+    read["Read every mail for all subjects at once"]
+    theirs["Propose: this span is theirs"]
+    lookalike["Propose: looks like them — namesake or expired role"]
+    read --> theirs
+    read --> lookalike
+  end
+
+  subgraph judge [2. Judge]
+    vote["Second model votes on each proposal it did not find"]
+    keep["Both agree → stay in the draft"]
+    tie["Still disagree → a third call picks"]
+    vote --> keep
+    vote --> tie
+  end
+
+  subgraph human [3. Human]
+    q["Is this this person's personal data?"]
+    hyes["YES — keep the thought, maybe trim"]
+    hno["NO — namesake / expired role / not about them"]
+    q --> hyes
+    q --> hno
+  end
+
+  gold[Closed key — not in this repo]
+
+  mail --> read
+  people --> read
+  notebook --> read
+  theirs --> vote
+  lookalike --> vote
+  keep --> q
+  tie --> q
+  hyes --> gold
+  hno --> gold
 ```
 
-1. **Gemini** reads every mail for every subject and proposes passages
-   (theirs, or a lookalike that is not).
-2. **Judge** — a second model votes on each proposal. Disagreements get
-   a third call.
-3. **Human** — one question: is this this person's data? That mark is
-   gold. The key is closed and not in this repo.
-
 Review corrects a draft. It is not "the model and the human agreed."
+The notebook is frozen at that message's date. Labelling every subject
+on every mail is what produces the traps.
 
 ## Official exam
 
