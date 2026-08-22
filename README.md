@@ -17,41 +17,14 @@ scoring is private. The answer key is not in this repository.
 
 ```mermaid
 flowchart LR
-  cards[Subject cards]
-  archive[Mail archive]
-  agent[Your agent]
-  out[JSONL passages]
-  score[Four numbers]
-  cards --> agent
-  archive --> agent
-  agent -->|"open some mail, not all"| out
-  out --> score
+  in["Subject cards<br/>+ mail archive"] --> agent["Your agent"]
+  agent -->|"opens some mail, not all"| out["JSONL:<br/>one passage per line"]
+  out --> score["recall · precision<br/>decoy rate · budget"]
 ```
 
-The four numbers: **recall** (did you find their data, including unnamed
-passages), **precision** (is what you returned actually theirs), **decoy
-rate** (did you hand over a namesake or an expired role), **budget** (how
-much you opened). None is enough alone. Grep is the floor, not the exam.
-
-Two ways in:
-
-```mermaid
-flowchart TD
-  start[First time here]
-  start --> practice
-  start --> official
-  practice[Practice: Sallow FM]
-  official[Official exam]
-  practice --> sallow["dist/sallow/"]
-  sallow --> run1[Your agent or name_search]
-  run1 --> local["score.py --dev dist/sallow"]
-  official --> rebuild[Rebuild the real corpus]
-  rebuild --> run2[Your agent]
-  run2 --> closed[We score. The key stays here.]
-```
-
-Start on Sallow. Same rules, fictional people, you can score on your
-machine. The official archive is a different corpus and a closed key.
+Start on the Sallow practice set below: same rules, fictional people, and
+you can score it on your own machine. The official exam is a different
+archive with a closed key, scored on our side.
 
 ## The exam
 
@@ -107,51 +80,21 @@ of the real archive. The machine proposes. Another model judges. A human
 decides. That last mark is gold.
 
 ```mermaid
-flowchart TD
-  mail[Every email in the archive]
-  people[Every data subject]
-  notebook["Who held which job on this mail's date"]
-
-  subgraph pass1 [1. Gemini first pass]
-    read["Read every mail for all subjects at once"]
-    theirs["Propose: this span is theirs"]
-    lookalike["Propose: looks like them — namesake or expired role"]
-    read --> theirs
-    read --> lookalike
-  end
-
-  subgraph judge [2. Judge]
-    vote["Second model votes on each proposal it did not find"]
-    keep["Both agree → stay in the draft"]
-    tie["Still disagree → a third call picks"]
-    vote --> keep
-    vote --> tie
-  end
-
-  subgraph human [3. Human]
-    q["Is this this person's personal data?"]
-    hyes["YES — keep the thought, maybe trim"]
-    hno["NO — namesake / expired role / not about them"]
-    q --> hyes
-    q --> hno
-  end
-
-  gold[Closed key — not in this repo]
-
-  mail --> read
-  people --> read
-  notebook --> read
-  theirs --> vote
-  lookalike --> vote
-  keep --> q
-  tie --> q
-  hyes --> gold
-  hno --> gold
+flowchart LR
+  src["Every email × every subject<br/>roles dated as of that message"]
+  draft["1 · Gemini drafts<br/>passages that are theirs,<br/>plus lookalikes that are not"]
+  judge["2 · Second model judges<br/>votes on spans it did not find;<br/>a third call breaks ties"]
+  human["3 · Human decides<br/>YES or NO on each proposed span"]
+  key["Closed key"]
+  src --> draft --> judge --> human --> key
 ```
 
-Review corrects a draft. It is not "the model and the human agreed."
-The notebook is frozen at that message's date. Labelling every subject
-on every mail is what produces the traps.
+Three properties come out of that shape. Roles are read as of the message
+date, so no label rests on a later fact. Every subject is considered on
+every mail, which is what produces the lookalikes — a namesake, or a job
+title that belonged to someone else at the time. And the human corrects a
+draft rather than labelling from scratch, so this is not a claim that the
+model and the human independently agreed.
 
 ## Official exam
 
