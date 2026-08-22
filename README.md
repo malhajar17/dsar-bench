@@ -48,6 +48,20 @@ python3 dsarbench/score.py runs/my_agent.jsonl --dev dist/sallow
 49 labelled passages, ten fictional volunteers. Official scoring stays
 private and uses a different corpus.
 
+Keyword floor on this set (not the official exam):
+
+```
+python3 baselines/name_search.py --mode cautious \
+  --corpus dist/sallow/corpus.jsonl \
+  --subjects-file dist/sallow/subjects.json \
+  --out runs/sallow_name_search_cautious.jsonl
+python3 dsarbench/score.py runs/sallow_name_search_cautious.jsonl --dev dist/sallow
+```
+
+Cautious 46.3% recall / 40.4% precision; greedy 48.8% / 40.0%. Named
+passages 95%; unnamed 0–5%; T7 authorship almost untouched. The two
+decoys are an expired role title.
+
 ## Official exam
 
 A submission is JSONL, one returned passage per line:

@@ -18,6 +18,14 @@ any other system:
 
     python3 baselines/name_search.py --mode greedy --out runs/name_search_greedy.jsonl
     python3 dsarbench/score.py runs/name_search_greedy.jsonl
+
+Practice set (Sallow cards, not the official subjects):
+
+    python3 baselines/name_search.py --mode cautious \
+        --corpus dist/sallow/corpus.jsonl \
+        --subjects-file dist/sallow/subjects.json \
+        --out runs/sallow_name_search_cautious.jsonl
+    python3 dsarbench/score.py runs/sallow_name_search_cautious.jsonl --dev dist/sallow
 """
 
 from __future__ import annotations
@@ -76,12 +84,18 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--mode", choices=("cautious", "greedy"), default="cautious")
     ap.add_argument("--corpus", default=str(ROOT / "corpus.jsonl"))
     ap.add_argument("--subjects", default="")
+    ap.add_argument("--subjects-file", default="",
+                    help="JSON subject cards (e.g. dist/sallow/subjects.json)")
     ap.add_argument("--out", default="")
     args = ap.parse_args(argv)
 
     with open(args.corpus, encoding="utf-8") as fh:
         docs = [json.loads(l) for l in fh if l.strip()]
-    sids = [s.strip() for s in args.subjects.split(",") if s.strip()] or list(SUBJECTS)
+    if args.subjects_file:
+        cards = json.loads(pathlib.Path(args.subjects_file).read_text())
+    else:
+        cards = SUBJECTS
+    sids = [s.strip() for s in args.subjects.split(",") if s.strip()] or list(cards)
 
     out_path = pathlib.Path(args.out or ROOT / "runs" / f"name_search_{args.mode}.jsonl")
     out_path.parent.mkdir(parents=True, exist_ok=True)
@@ -89,7 +103,7 @@ def main(argv: list[str] | None = None) -> int:
     n = 0
     with out_path.open("w", encoding="utf-8") as fh:
         for sid in sids:
-            terms = terms_for(SUBJECTS[sid], args.mode)
+            terms = terms_for(cards[sid], args.mode)
             for doc in docs:
                 for block_id, s, e in tag(doc, terms):
                     fh.write(json.dumps({
