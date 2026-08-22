@@ -1,0 +1,249 @@
+{
+  "P8": {
+    "display": "Meera Sharma",
+    "known_names": [
+      "Meera Sharma",
+      "Meera"
+    ],
+    "aliases": [],
+    "addresses": [
+      "m.sharma@sallowfm.co.uk",
+      "meera.sharma81@gmail.com"
+    ],
+    "roles": [
+      {
+        "role": "Station Manager",
+        "from": "2021-06-01",
+        "to": null,
+        "basis": "Appointed after George Rowe retired."
+      }
+    ],
+    "confusable": [
+      "Meena Tailor (town councillor)"
+    ],
+    "one_liner": "Station manager; keeps the station on air and on budget.",
+    "subject_id": "P8"
+  },
+  "P4": {
+    "display": "Chloe-An Gwon",
+    "known_names": [
+      "Chloe-An Gwon",
+      "Chloe Gwon",
+      "Chloe"
+    ],
+    "aliases": [],
+    "addresses": [
+      "gwon.ca@sallowfm.co.uk",
+      "chloe.an.g@gmail.com"
+    ],
+    "roles": [
+      {
+        "role": "Music Librarian",
+        "from": "2019-07-22",
+        "to": null,
+        "basis": "Library and Ofcom music returns."
+      }
+    ],
+    "confusable": [],
+    "one_liner": "Digital library and the music log.",
+    "subject_id": "P4"
+  },
+  "P1": {
+    "display": "Alistair Finch",
+    "known_names": [
+      "Alistair Finch",
+      "Alistair"
+    ],
+    "aliases": [
+      "Big Al",
+      "Al"
+    ],
+    "addresses": [
+      "al.finch.eng@btinternet.com"
+    ],
+    "roles": [
+      {
+        "role": "Duty Engineer",
+        "from": "2010-01-01",
+        "to": null,
+        "basis": "Volunteer; retired BT."
+      },
+      {
+        "role": "Frequency Manager",
+        "from": "2018-03-15",
+        "to": "2023-09-01",
+        "basis": "Handed the Ofcom paperwork on."
+      }
+    ],
+    "confusable": [],
+    "one_liner": "Knows the transmitter. Trains Owen. Rarely uses a first-person pronoun about himself.",
+    "subject_id": "P1"
+  },
+  "P7": {
+    "display": "Kasia Kowalczyk-Davies",
+    "known_names": [
+      "Katarzyna Kowalczyk-Davies",
+      "Kasia Kowalczyk-Davies",
+      "Kasia"
+    ],
+    "aliases": [],
+    "addresses": [
+      "k.kowalczyk@sallowfm.co.uk"
+    ],
+    "roles": [
+      {
+        "role": "Presenter",
+        "from": "2019-02-11",
+        "to": null,
+        "basis": "Tuesday evening show."
+      }
+    ],
+    "confusable": [],
+    "one_liner": "Hosts Polish Fusion on Tuesday evenings.",
+    "subject_id": "P7"
+  },
+  "P10": {
+    "display": "Ben Calloway",
+    "known_names": [
+      "Benjamin Calloway",
+      "Ben Calloway",
+      "Ben"
+    ],
+    "aliases": [
+      "Benny C"
+    ],
+    "addresses": [
+      "bencalloway@hotmail.co.uk",
+      "ben.calloway@thecornishchronicle.com"
+    ],
+    "roles": [
+      {
+        "role": "Presenter",
+        "from": "2022-07-20",
+        "to": null,
+        "basis": "Tide Times / bay report."
+      }
+    ],
+    "confusable": [
+      "Ben Travers (ironmonger on Fore Street)"
+    ],
+    "one_liner": "Presents Tide Times; also strings for the Chronicle. Signs some mail -Ben.",
+    "subject_id": "P10"
+  },
+  "P6": {
+    "display": "Samira Hussein",
+    "known_names": [
+      "Samira Hussein",
+      "Samira"
+    ],
+    "aliases": [
+      "Sam"
+    ],
+    "addresses": [
+      "sam.h@sallowfm.co.uk"
+    ],
+    "roles": [
+      {
+        "role": "Treasurer",
+        "from": "2020-05-18",
+        "to": null,
+        "basis": "Appointed; grant and invoice work."
+      }
+    ],
+    "confusable": [],
+    "one_liner": "Books, invoices, grant forms.",
+    "subject_id": "P6"
+  },
+  "P5": {
+    "display": "Owen Petrides",
+    "known_names": [
+      "Owen Petrides",
+      "Owen"
+    ],
+    "aliases": [
+      "O.P."
+    ],
+    "addresses": [
+      "owen.p.88@yahoo.com"
+    ],
+    "roles": [
+      {
+        "role": "Duty Engineer",
+        "from": "2021-11-01",
+        "to": null,
+        "basis": "Studio side; Alistair trains him."
+      }
+    ],
+    "confusable": [],
+    "one_liner": "Younger studio engineer.",
+    "subject_id": "P5"
+  },
+  "P3": {
+    "display": "Lena Vicente",
+    "known_names": [
+      "Magdalena Vicente",
+      "Lena Vicente",
+      "Lena"
+    ],
+    "aliases": [],
+    "addresses": [
+      "lena.vicente@live.co.uk"
+    ],
+    "roles": [
+      {
+        "role": "Presenter",
+        "from": "2018-09-03",
+        "to": null,
+        "basis": "Folk hour."
+      }
+    ],
+    "confusable": [],
+    "one_liner": "Folk and shanties; vinyl memory.",
+    "subject_id": "P3"
+  },
+  "P2": {
+    "display": "Ciara Murphy",
+    "known_names": [
+      "Ciara Murphy",
+      "Ciara"
+    ],
+    "aliases": [],
+    "addresses": [
+      "ciara.m@sallowfm.co.uk"
+    ],
+    "roles": [
+      {
+        "role": "Outside Broadcast Coordinator",
+        "from": "2022-04-01",
+        "to": null,
+        "basis": "Fish Festival and Regatta tent."
+      }
+    ],
+    "confusable": [],
+    "one_liner": "OB kit and the festival tent.",
+    "subject_id": "P2"
+  },
+  "P9": {
+    "display": "David Chen",
+    "known_names": [
+      "David Chen",
+      "Dave Chen",
+      "Dave"
+    ],
+    "aliases": [],
+    "addresses": [
+      "dchen.accountancy@gmail.com"
+    ],
+    "roles": [
+      {
+        "role": "Presenter",
+        "from": "2023-01-15",
+        "to": null,
+        "basis": "Late Night Jazz."
+      }
+    ],
+    "confusable": [],
+    "one_liner": "Took over Late Night Jazz; day job is accountancy.",
+    "subject_id": "P9"
+  }
+}

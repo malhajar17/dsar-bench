@@ -77,6 +77,9 @@ S2_look_with_your_eyes.md
 # because the `subjects.json` rule above matches at any depth.
 !dist/subjects.json
 !dist/corpus_manifest.json
+!dist/sallow/corpus.jsonl
+!dist/sallow/subjects.json
+!dist/sallow/devset.jsonl
 
 # Frozen closed key: human gold, verbatim passages, living people. Not published.
 data/closed_key.jsonl
