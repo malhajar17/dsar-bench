@@ -44,8 +44,9 @@ submission format.
 python3 dsarbench/score.py runs/my_agent.jsonl --dev dist/sallow
 ```
 
-45 emails, 47 labelled passages, ten fictional volunteers. Official
-scoring stays private and uses a different corpus.
+24 emails in 6 threads (one incident each, people quoting each other),
+49 labelled passages, ten fictional volunteers. Official scoring stays
+private and uses a different corpus.
 
 ## Official exam
 
