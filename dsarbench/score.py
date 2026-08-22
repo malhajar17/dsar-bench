@@ -19,7 +19,7 @@ import sys
 
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 
-from harness.corpus import load_corpus, load_key  # noqa: E402
+from harness.corpus import load_corpus, load_devset, load_key  # noqa: E402
 from harness.metrics import score  # noqa: E402
 from harness.report import render  # noqa: E402
 from harness.submission import read_submission  # noqa: E402
@@ -35,11 +35,17 @@ def main(argv: list[str] | None = None) -> int:
     ap.add_argument("--json", dest="json_out", default="", help="also write JSON here")
     ap.add_argument("--examples", type=int, default=5,
                     help="how many failures to print per category (0 for none)")
+    ap.add_argument("--dev", default="",
+                    help="practice-set directory (corpus.jsonl, subjects.json, devset.jsonl)")
     args = ap.parse_args(argv)
 
-    docs = load_corpus(args.corpus)
-    sids = [s.strip() for s in args.subjects.split(",") if s.strip()] or None
-    key = load_key(args.root, corpus=docs, subjects=sids)
+    if args.dev:
+        key = load_devset(args.dev)
+        docs = key.docs
+    else:
+        docs = load_corpus(args.corpus)
+        sids = [s.strip() for s in args.subjects.split(",") if s.strip()] or None
+        key = load_key(args.root, corpus=docs, subjects=sids)
 
     preds, warnings = read_submission(args.submission, docs, set(key.subjects))
     card = score(preds, key, warnings)

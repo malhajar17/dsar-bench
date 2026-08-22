@@ -109,3 +109,27 @@ def load_key(root: str | pathlib.Path | None = None,
 
     return Key(subjects={s: SUBJECTS[s] for s in sids}, positives=pos,
                negatives=neg, docs=docs)
+
+
+def load_devset(dev_dir: str | pathlib.Path) -> Key:
+    """Sallow (or any rewritten) practice set: corpus + subjects + labelled jsonl."""
+    dev_dir = pathlib.Path(dev_dir)
+    docs = load_corpus(dev_dir / "corpus.jsonl")
+    cards = json.loads((dev_dir / "subjects.json").read_text())
+    pos, neg = [], []
+    with (dev_dir / "devset.jsonl").open(encoding="utf-8") as fh:
+        rows = [json.loads(l) for l in fh if l.strip()]
+    for r in rows:
+        sid = r["subject_id"]
+        if r["doc_id"] not in docs:
+            continue
+        cfg = cards.get(sid) or {}
+        rx = subject_pattern(cfg) if (cfg.get("known_names") or cfg.get("aliases")) else None
+        e = Entry(subject_id=sid, doc_id=r["doc_id"],
+                  block_id=int(r["block_id"]) if r.get("block_id") is not None else 0,
+                  span=(r["span"][0], r["span"][1]), text=r.get("text", ""),
+                  tier=(r.get("tier") or "T?").upper(),
+                  positive=r.get("label") != "NEGATIVE")
+        object.__setattr__(e, "_named", bool(rx.search(e.text)) if rx else False)
+        (pos if e.positive else neg).append(e)
+    return Key(subjects=cards, positives=pos, negatives=neg, docs=docs)

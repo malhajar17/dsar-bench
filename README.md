@@ -34,7 +34,20 @@ grep has not done the task.
 Name search is the keyword floor, not the exam. Cautious and greedy modes
 live in `baselines/name_search.py`. Full spec in [docs/TASK.md](docs/TASK.md).
 
-## Quick start
+## Practice set (Sallow FM)
+
+A rewritten community-radio archive you can score locally. Names, events,
+and organisation are not the official test. Same Nowak rules, same
+submission format.
+
+```
+python3 dsarbench/score.py runs/my_agent.jsonl --dev dist/sallow
+```
+
+45 emails, 47 labelled passages, ten fictional volunteers. Official
+scoring stays private and uses a different corpus.
+
+## Official exam
 
 A submission is JSONL, one returned passage per line:
 
@@ -42,16 +55,10 @@ A submission is JSONL, one returned passage per line:
 {"subject_id": "S1", "doc_id": "dp-2024-01-00001-00000000", "text": "verbatim quote"}
 ```
 
-Quote the passage verbatim; the harness anchors it to the corpus. Local
-`score.py` only works if you have a key; official scores are computed on
-our side. Reproduce the keyword floors with `baselines/name_search.py`,
-`--mode cautious` or `--mode greedy`.
-
-The ten subjects ship in `dist/subjects.json`. The corpus is rebuilt rather
-than distributed — `fetch_debian.py`, then `parse.py`, then
-`build_inputs.py --verify`, which fingerprints the result against
-`dist/corpus_manifest.json`. A rebuild that fails `--verify` will cite ids
-the key cannot resolve.
+Quote the passage verbatim; the harness anchors it to the corpus. Official
+scores are computed on our side. The real corpus is rebuilt rather than
+distributed — `fetch_debian.py`, then `parse.py`, then
+`build_inputs.py --verify` against `dist/corpus_manifest.json`.
 
 ## Layout
 
@@ -60,7 +67,8 @@ dsarbench/harness/    scoring library; offline, deterministic, no model calls
 dsarbench/score.py    score a submission (needs a local key)
 baselines/            keyword floors, emitted as ordinary submissions
 docs/                 task spec, provenance, related work
-dist/                 task card and corpus manifest
+dist/sallow/          practice set (rewritten; locally scorable)
+dist/                 official task card and corpus manifest
 ```
 
 ## Documentation

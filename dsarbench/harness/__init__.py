@@ -12,10 +12,10 @@ and nothing else -- no model calls, no network, deterministic.
   report      render a scorecard as text or JSON
 """
 
-from .corpus import Key, load_corpus, load_key  # noqa: F401
+from .corpus import Key, load_corpus, load_devset, load_key  # noqa: F401
 from .matching import assign, overlap_frac  # noqa: F401
 from .metrics import Scorecard, score  # noqa: F401
 from .submission import Prediction, read_submission  # noqa: F401
 
-__all__ = ["Key", "load_corpus", "load_key", "assign", "overlap_frac",
+__all__ = ["Key", "load_corpus", "load_devset", "load_key", "assign", "overlap_frac",
            "Scorecard", "score", "Prediction", "read_submission"]
