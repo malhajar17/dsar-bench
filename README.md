@@ -106,6 +106,45 @@ told which model said what.
 **A human decides.** One question per proposed span: is this this
 person's personal data? That mark is the key.
 
+### What deciding actually looks like
+
+Adjudication runs in a local-only interface that reads the key off disk
+and uploads nothing. Each item is one highlighted passage shown in the
+email it came from, with the subject's aliases and the people they are
+not to be confused with:
+
+![One item awaiting a verdict: the passage highlighted in its original
+email, with Jonathan Carter's aliases and lookalikes
+listed](docs/images/annotation-01-item.png)
+
+The brief is deliberate about what "no" means. Roughly a tenth of the
+items are lookalikes — passages that resemble the subject but belong to
+a namesake — so rejecting one is a recorded answer rather than a skip:
+
+![The task brief, explaining that the archive contains a Jonathan
+Dowland as well as a Jonathan Carter, and that confirming a lookalike is
+a real answer](docs/images/annotation-02-brief.png)
+
+Order is enforced by the server, not the page. The endpoint serving an
+item never carries the model's verdict, tier or rationale; the reveal
+endpoint returns them only once a human mark for that item is already on
+disk. An adjudicator shown the answer first is being asked to agree, and
+agreement measured that way says nothing about whether the key is right.
+Afterwards both drafts and any disagreement are shown in full:
+
+![After answering, both model verdicts appear side by side, including a
+case where the human said YES and the model said NOT theirs, with a
+running agreement count](docs/images/annotation-03-reveal.png)
+
+A helper agent answers questions about the thread — who someone is, what
+a role means, what happened earlier in an argument. It receives the
+thread and the subject brief but never the label, so it cannot leak the
+answer it is standing beside:
+
+![The context panel, which can be asked who a person is and what a
+thread is about, and which is never told the
+label](docs/images/annotation-04-context.png)
+
 Two things follow. Considering every subject on every mail is what
 produces the lookalikes — a pass scoped to one name almost never has
 occasion to say no. And the human corrects a draft rather than labelling
